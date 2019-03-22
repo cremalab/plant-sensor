@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Run this file on a task runner, like cron, example:
+#0 */2 * * * ~/Desktop/plant.py
+
 from time import sleep, time
 from flask import Flask
 from board import SCL, SDA
@@ -38,5 +41,5 @@ temp = ss.get_temp();
 
 power.off();
 
-payload = {'instanceId': 'testthree', 'timestamp': ts, 'level': moisture, 'temp': round(temp, 2)}
+payload = {'instanceId': 'livedemo', 'timestamp': ts, 'level': moisture, 'temp': round(temp, 2)}
 requests.get('https://us-central1-happyplantcloudfunctions.cloudfunctions.net/addMoistureUpdate', params=payload)
